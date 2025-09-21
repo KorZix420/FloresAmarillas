@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+.container {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+h1 {
+    font-size: 36px;
+    color: #dad09c;
+    margin-top: 20px;
+}
+
+.flower-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.flower {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    pointer-events: auto;
+}
+
+.petal {
+    width: 50px;
+    height: 120px;
+    background-color: #ffd904ce;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 100%;
+}
+
+.p1 { transform: translate(-50%, -50%) rotate(0deg); }
+.p2 { transform: translate(-50%, -50%) rotate(36deg); }
+.p3 { transform: translate(-50%, -50%) rotate(72deg); }
+.p4 { transform: translate(-50%, -50%) rotate(108deg); }
+.p5 { transform: translate(-50%, -50%) rotate(144deg); }
+.p6 { transform: translate(-50%, -50%) rotate(180deg); }
+.p7 { transform: translate(-50%, -50%) rotate(216deg); }
+.p8 { transform: translate(-50%, -50%) rotate(252deg); }
+.p9 { transform: translate(-50%, -50%) rotate(288deg); }
+.p10 { transform: translate(-50%, -50%) rotate(324deg); }
+
+.center {
+    width: 60px;
+    height: 60px;
+    background-color: #ffbf00;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.stem {
+    width: 8px;
+    height: 150px;
+    background-color: #388e3c;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    border-radius: 0 0 4px 4px;
+}
+
+.leaf {
+    width: 40px;
+    height: 15px;
+    background-color: #388e3c;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.leaf1 {
+    top: -50px;
+    left: 10px;
+    transform: rotate(45deg);
+}
+
+.leaf2 {
+    top: -100px;
+    left: -10px;
+    transform: rotate(-45deg);
+}
+
+@keyframes fadeInPetal {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0) rotate(0deg); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(var(--petal-rotation)); }
+}
+
+.petal {
+    animation: fadeInPetal 2s ease-out forwards;
+    animation-delay: calc(var(--petal-index) * 0.1s);
+    transform-origin: center center;
+}
+
+@keyframes flowerAppear {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.flower {
+    animation: flowerAppear 1s ease-out forwards;
+    animation-delay: var(--flower-delay);
+}
